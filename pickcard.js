@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.createElement('img');
     img.style.width = '100%';
     img.style.height = '100%';
-    img.src = 'cards/Back_Card.jpg';
+    img.src = 'Back_Card.jpg';
     img.alt = 'card back';
     card.appendChild(img);
     
