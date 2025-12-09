@@ -7,9 +7,9 @@
 body {
             font-family: 'Crimson Text', serif;
             background: linear-gradient(180deg, #99D1EB 0%, #FCDADA 64%);
-            min-height: 100vh;
+            height: 100vh;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
             animation: fadeIn 0.8s ease-in;
         }
 
@@ -31,20 +31,20 @@ body {
 
         .header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
 
         .header-bg {
             background: #C9DBE9;
             border-radius: 142px;
-            padding: 20px 80px;
+            padding: 15px 60px;
             display: inline-block;
-            margin-top: 60px;
+            margin-top: 30px;
         }
 
         .header h1 {
             font-family: 'Lobster', cursive;
-            font-size: 80px;
+            font-size: 60px;
             color: black;
             font-weight: 400;
         }
@@ -136,10 +136,12 @@ body {
         }
 
         .back-button {
-            display: block;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 252px;
             height: 93px;
-            margin: 40px auto 0;
             background: #E5BEBE;
             border: none;
             border-radius: 142px;
@@ -150,16 +152,17 @@ body {
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 100;
         }
 
         .back-button:hover {
             background: #D9AEAE;
-            transform: translateY(-2px);
+            transform: translateX(-50%) translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
 
         .back-button:active {
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
 
         @media (max-width: 768px) {
