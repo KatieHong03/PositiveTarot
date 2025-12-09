@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(180deg, #99D1EB 0%, #FCDADA 64%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2D2D2D;
+            padding: 40px 20px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .card-display {
+            flex-shrink: 0;
+        }
+
+        .tarot-card {
+            width: 350px;
+            height: 560px;
+            border-radius: 12px;
+            border: 4px solid #D4AF37;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            background: white;
+        }
+
+        .tarot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            max-width: 705px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .card-title {
+            color: black;
+            font-size: 60px;
+            font-family: 'Lobster', cursive;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .card-keywords {
+            color: black;
+            font-size: 36px;
+            font-style: italic;
+            font-weight: 600;
+            margin-top: -8px;
+        }
+
+        .card-description {
+            color: black;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .affirmation-section {
+            margin-top: 8px;
+        }
+
+        .spacer {
+            height: 30px;
+        }
+
+        .affirmation-title {
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .back-button {
+            width: 200px;
+            height: 70px;
+            background: #E5BEBE;
+            border: none;
+            border-radius: 142px;
+            color: black;
+            font-size: 20px;
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 12px;
+        }
+
+        .back-button:hover {
+            background: #D9AAAA;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-footer {
+            position: fixed;
+            bottom: 40px;
+            font-family: 'Lobster', cursive;
+            font-size: 32px;
+            color: #2D2D2D;
+            text-align: center;
+        }
+
+        .brand-footer .star {
+            margin: 0 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .card-title {
+                font-size: 48px;
+            }
+
+            .card-keywords {
+                font-size: 28px;
+            }
+
+            .card-description {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tarot-card {
+                width: 280px;
+                height: 448px;
+            }
+
+            .card-content {
+                max-width: 100%;
+            }
+
+            .card-title {
+                font-size: 40px;
+            }
+
+            .card-keywords {
+                font-size: 24px;
+            }
+
+            .card-description {
+                font-size: 22px;
+            }
+
+            .back-button {
+                width: 220px;
+                height: 80px;
+                font-size: 22px;
+            }
+
+            .brand-footer {
+                font-size: 26px;
+                bottom: 30px;
+            }
+        }

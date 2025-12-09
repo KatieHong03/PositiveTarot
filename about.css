@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(180deg, #99D1EB 0%, #FCDADA 64%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header-bg {
+            background: #C9DBE9;
+            border-radius: 142px;
+            padding: 20px 80px;
+            display: inline-block;
+            margin-top: 60px;
+        }
+
+        .header h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 80px;
+            color: black;
+            font-weight: 400;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .cards-stack {
+            position: relative;
+            width: 280px;
+            height: 400px;
+            flex-shrink: 0;
+        }
+
+        .card {
+            position: absolute;
+            width: 180px;
+            height: 280px;
+            border: 3px solid #D4AF37;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .card img {
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .card1 {
+            background: linear-gradient(180deg, #A8D8EA 0%, #FFB6C1 100%);
+            left: 0;
+            top: 0;
+            transform: rotate(-8deg);
+        }
+
+        .card2 {
+            background: linear-gradient(180deg, #B8E0EA 0%, #FFC9D1 100%);
+            left: 50px;
+            top: 30px;
+            transform: rotate(-3deg);
+        }
+
+        .card3 {
+            background: linear-gradient(180deg, #C8E8EA 0%, #FFD9E1 100%);
+            left: 100px;
+            top: 60px;
+            transform: rotate(2deg);
+        }
+
+        .card-symbol {
+            position: absolute;
+            font-size: 48px;
+            color: #F0E68C;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card-symbol.top {
+            top: 20px;
+        }
+
+        .card-symbol.bottom {
+            bottom: 20px;
+        }
+
+        .text-content {
+            max-width: 680px;
+            font-size: 24px;
+            line-height: 1.6;
+            color: black;
+        }
+
+        .text-content .bold {
+            font-weight: 700;
+            animation: none;
+            transition: none;
+        }
+
+        .text-content p {
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            display: block;
+            width: 252px;
+            height: 93px;
+            margin: 40px auto 0;
+            background: #E5BEBE;
+            border: none;
+            border-radius: 142px;
+            font-family: 'Crimson Text', serif;
+            font-size: 25px;
+            font-weight: 700;
+            color: black;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background: #D9AEAE;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 60px;
+            }
+
+            .content-wrapper {
+                gap: 40px;
+            }
+
+            .cards-stack {
+                width: 240px;
+                height: 320px;
+            }
+
+            .card {
+                width: 150px;
+                height: 230px;
+            }
+
+            .card2 {
+                left: 40px;
+                top: 25px;
+            }
+
+            .card3 {
+                left: 80px;
+                top: 50px;
+            }
+
+            .text-content {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+
+            .back-button {
+                width: 200px;
+                height: 75px;
+                font-size: 22px;
+            }
+        }

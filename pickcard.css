@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #99D1EB 0%, #FCDADA 100%);
+            font-family: 'Crimson Text', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: #2D2D2D;
+            text-align: center;
+        }
+
+        .card-stack {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 420px;
+            transition: all 0.5s ease;
+        }
+
+        .card-stack:hover {
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+        }
+
+        .card-stack.fan-spread {
+            width: 100%;
+            max-width: 1600px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .tarot-card {
+            position: absolute;
+            width: 200px;
+            height: 320px;
+            border-radius: 12px;
+            border: 3px solid rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .card-back {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .card-back-2 {
+            left: 50%;
+            top: 45%;
+            transform: translate(-65%, -50%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .card-back-3 {
+            left: 50%;
+            top: 45%;
+            transform: translate(-35%, -50%);
+            opacity: 0.9;
+            z-index: -2;
+        }
+
+        .card-symbol-top {
+            font-size: 2rem;
+            color: #D4AF37;
+        }
+
+        .card-center {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .starburst {
+            font-size: 3rem;
+            color: #D4AF37;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .card-symbol-bottom {
+            font-size: 2rem;
+            color: #FFD700;
+        }
+
+        /* Fan spread cards */
+        .fan-card {
+            position: relative;
+            width: 130px;
+            height: 220px;
+            flex-shrink: 0;
+            margin: 0 -35px;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.6s ease-out, opacity 0.5s ease-out;
+            transition-delay: var(--delay);
+            cursor: pointer;
+            border: 3px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .fan-card.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .fan-card:hover {
+            border: 3px solid rgba(255, 235, 100, 0.9) !important;
+            filter: brightness(1.05);
+            transition: border 0s, filter 0s;
+        }
+
+        .pick-button {
+            background: #E5BEBE;
+            border: none;
+            border-radius: 142px;
+            padding: 16px 50px;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2D2D2D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            outline: none;
+            margin-bottom: 60px;
+        }
+
+        .pick-button:hover {
+            background: #D9ADAD;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .pick-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Lobster', cursive;
+            font-size: 1.8rem;
+            color: #2D2D2D;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .star {
+            margin: 0 12px;
+        }
+
+        .buttons {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        .pill-button {
+            background: #E5BEBE;
+            border: none;
+            border-radius: 142px;
+            padding: 16px 50px;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .pill-button:hover {
+            background: #D9ADAD;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .pill-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                top: 30px;
+            }
+
+            .card-stack {
+                width: 240px;
+                height: 360px;
+                margin-bottom: 60px;
+            }
+
+            .tarot-card {
+                width: 160px;
+                height: 260px;
+                padding: 15px;
+            }
+
+            .card-symbol-top {
+                font-size: 1.5rem;
+            }
+
+            .card-center {
+                width: 90px;
+                height: 90px;
+            }
+
+            .starburst {
+                font-size: 2.2rem;
+            }
+
+            .card-symbol-bottom {
+                font-size: 1.5rem;
+            }
+
+            .pick-button {
+                font-size: 1.3rem;
+                padding: 14px 40px;
+            }
+
+            .footer {
+                font-size: 1.5rem;
+                bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .card-stack {
+                width: 200px;
+                height: 300px;
+            }
+
+            .tarot-card {
+                width: 140px;
+                height: 220px;
+            }
+
+            .footer {
+                font-size: 1.2rem;
+            }
+        }

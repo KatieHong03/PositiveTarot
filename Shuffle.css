@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #99D1EB 0%, #FCDADA 100%);
+    font-family: 'Crimson Text', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.card-stack {
+    position: relative;
+    width: 280px;
+    height: 420px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.card-stack:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+}
+
+.tarot-card {
+    position: absolute;
+    width: 200px;
+    height: 320px;
+    border-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card-back {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-back-2 {
+    left: 50%;
+    top: 45%;
+    transform: translate(-65%, -50%);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.card-back-3 {
+    left: 50%;
+    top: 45%;
+    transform: translate(-35%, -50%);
+    opacity: 0.9;
+    z-index: -2;
+}
+
+.instruction-text {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: black;
+}
+
+.shuffle-button {
+    background: #E5BEBE;
+    border: none;
+    border-radius: 142px;
+    padding: 29px 48px;
+    font-family: 'Crimson Text', serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+}
+
+.shuffle-button:hover:not(:disabled) {
+    background: #D9ADAD;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.shuffle-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shuffle-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Shuffling animation - Two phases */
+.card-stack.shuffling .card-back {
+    animation: shuffleCenter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-stack.shuffling .card-back-2 {
+    animation: shuffleLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-stack.shuffling .card-back-3 {
+    animation: shuffleRight 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Center card animation */
+@keyframes shuffleCenter {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    /* Phase 1: Lift and tilt */
+    15% {
+        transform: translate(-50%, -53%) rotate(2deg);
+    }
+    35% {
+        transform: translate(-50%, -53%) rotate(2deg);
+    }
+    /* Phase 2: Straighten and stack - move to middle position */
+    50% {
+        transform: translate(-50%, -53%) rotate(0deg);
+    }
+    85% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    /* Subtle bounce */
+    92% {
+        transform: translate(-50%, -48%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+/* Left card animation */
+@keyframes shuffleLeft {
+    0% {
+        transform: translate(-65%, -50%) rotate(0deg);
+        opacity: 0.9;
+        z-index: -1;
+    }
+    /* Phase 1: Lift, slide left, rotate counter-clockwise */
+    15% {
+        transform: translate(-65%, -52%) rotate(0deg);
+        opacity: 1;
+    }
+    35% {
+        transform: translate(-80%, -52%) rotate(-8deg);
+        opacity: 1;
+    }
+    /* Phase 2: Straighten and move to top of stack */
+    50% {
+        transform: translate(-80%, -52%) rotate(0deg);
+        opacity: 1;
+    }
+    85% {
+        transform: translate(-50%, -60%) rotate(0deg);
+        opacity: 0.95;
+        z-index: 0;
+    }
+    /* Subtle bounce */
+    92% {
+        transform: translate(-50%, -58%) rotate(0deg);
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate(-50%, -60%) rotate(0deg);
+        opacity: 0.95;
+        z-index: 0;
+    }
+}
+
+/* Right card animation */
+@keyframes shuffleRight {
+    0% {
+        transform: translate(-35%, -50%) rotate(0deg);
+        opacity: 0.9;
+        z-index: -2;
+    }
+    /* Phase 1: Lift, slide right, rotate clockwise */
+    15% {
+        transform: translate(-35%, -52%) rotate(0deg);
+        opacity: 1;
+    }
+    35% {
+        transform: translate(-20%, -52%) rotate(8deg);
+        opacity: 1;
+    }
+    /* Phase 2: Straighten and move to bottom of stack */
+    50% {
+        transform: translate(-20%, -52%) rotate(0deg);
+        opacity: 1;
+    }
+    85% {
+        transform: translate(-50%, -40%) rotate(0deg);
+        opacity: 0.95;
+        z-index: -1;
+    }
+    /* Subtle bounce */
+    92% {
+        transform: translate(-50%, -42%) rotate(0deg);
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate(-50%, -40%) rotate(0deg);
+        opacity: 0.95;
+        z-index: -1;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Lobster', cursive;
+    font-size: 1.8rem;
+    color: #2D2D2D;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.star {
+    margin: 0 12px;
+}
+
+        .card-center::before {
+            width: 60px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .card-center::after {
+            width: 2px;
+            height: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #card-left {
+            left: -20px;
+            top: 30px;
+            z-index: 1;
+            transform: rotate(-8deg);
+        }
+
+        #card-middle {
+            left: 10px;
+            top: 10px;
+            z-index: 3;
+        }
+
+        #card-right {
+            left: 40px;
+            top: 30px;
+            z-index: 2;
+            transform: rotate(8deg);
+        }
+
+        .instruction-text {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .shuffle-button {
+            background: #E5BEBE;
+            border: none;
+            border-radius: 142px;
+            padding: 16px 48px;
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #2D2D2D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .shuffle-button:hover:not(:disabled) {
+            background: #D9AAAA;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .shuffle-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .brand-footer {
+            position: absolute;
+            bottom: 40px;
+            font-family: 'Lobster', cursive;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: #2D2D2D;
+        }
+
+        .brand-footer .star {
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        /* Shuffle animation states */
+        .shuffling #card-left {
+            transform: translate(-80px, -40px) rotate(-25deg);
+            z-index: 3;
+        }
+
+        .shuffling #card-middle {
+            transform: translate(0, -60px) rotate(5deg);
+            z-index: 2;
+        }
+
+        .shuffling #card-right {
+            transform: translate(80px, -40px) rotate(25deg);
+            z-index: 1;
+        }
+
+        .shuffling .card {
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .card-stack {
+                width: 180px;
+                height: 280px;
+                margin-bottom: 30px;
+            }
+
+            .card {
+                width: 160px;
+                height: 260px;
+            }
+
+            #card-left {
+                left: -15px;
+                top: 25px;
+            }
+
+            #card-middle {
+                left: 10px;
+                top: 8px;
+            }
+
+            #card-right {
+                left: 35px;
+                top: 25px;
+            }
+
+            .instruction-text {
+                font-size: 18px;
+                margin-bottom: 24px;
+            }
+
+            .shuffle-button {
+                padding: 14px 38px;
+                font-size: 18px;
+            }
+
+            .brand-footer {
+                font-size: 20px;
+                bottom: 30px;
+            }
+        }
